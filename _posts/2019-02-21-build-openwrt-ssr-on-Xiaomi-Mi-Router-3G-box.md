@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Some articles are just so short that we have to make the footer stick"
+title: "DIY: 基于OpenWRT和小米路由器的透明代理(SSR)"
 categories: misc
 ---
 
