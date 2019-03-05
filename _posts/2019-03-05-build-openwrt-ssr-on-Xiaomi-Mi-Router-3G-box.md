@@ -119,7 +119,7 @@ reboot（重启）
 
 ### 六、安装ShadowSocksR
 
-我自己编译了ShadowSocksR，如果不想自己编译，可以直接在这里下载这个文件 [luci-app-shadowsocksR_1.2.1_all.ipk]({{ site.url }}/assets/luci-app-shadowsocksR_1.2.1_all.ipk) 。这个版本，我是用OpenWrt v18.06.1版本编译的，使用的是以下编译选项：  
+我自己编译了ShadowSocksR，如果不想自己编译，可以直接在这里下载这个文件 [luci-app-shadowsocksR_1.2.1_all.ipk]({{ site.url }}/blog/assets/luci-app-shadowsocksR_1.2.1_all.ipk) 。这个版本，我是用OpenWrt v18.06.1版本编译的，使用的是以下编译选项：  
 Target System: MediaTek Ralink MIPS  
 Subtarget: MT7621 based boards  
 Target Profile: Xiaomi Mi Router 3G  
@@ -134,13 +134,13 @@ root@OpenWrt:~# opkg install openssh-sftp-server
 root@OpenWrt:~# opkg install luci-app-shadowsocksR_1.2.1_all.ipk  
 
 安装完毕，登录网页显示：
-![初始页面](/assets/pic01.jpg)  
+![初始页面](/blog/assets/pic01.jpg)  
 
 点击编辑后，配置SSR服务器的参数  
-![编辑服务器参数](/assets/pic02.jpg)  
+![编辑服务器参数](/blog/assets/pic02.jpg)  
 
 然后配置客户端的参数  
-![配置客户端参数](/assets/pic03.jpg)  
+![配置客户端参数](/blog/assets/pic03.jpg)  
 
 重启路由器即可（这个版本有些小bug，路由器不重启不生效）。
 
@@ -148,7 +148,7 @@ root@OpenWrt:~# opkg install luci-app-shadowsocksR_1.2.1_all.ipk
 
 打开路由器的SSR的状态页面，点击连接测试，如果连接测试都OK，即可使用。  
 
-![状态页面](/assets/pic04.jpg)
+![状态页面](/blog/assets/pic04.jpg)
 
 ### 八、其他
 我编译版本的路由策略是：  
