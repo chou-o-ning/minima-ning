@@ -7,7 +7,9 @@ categories: misc
 ### 一、前言
 
 之前我在China Unix的博客 [DIY: 基于OpenWRT和小米路由器的透明代理](http://blog.chinaunix.net/uid-26598889-id-5791053.html) 中写了如何在家改造一台无线路由器，直接支持ShadowSocks，被GFW收录的网站走代理，其他网站不走代理。这篇是其姊妹篇，两者唯一的区别就是使用ShadowSocks和ShadowSocksR.  
+
 另外注意：OpenWrt V18.06版本，mt76芯片组的的2.4GWiFi有缺陷，请谨慎使用。（5G频段是OK的）  
+
 因为这个博客使用Jekyll，暂时无法支持评论，因此如果有技术问题，可以发送到我的邮箱一起探讨，邮箱地址为chou dot o dot ning at gmail dot com  
 
 ### 二、缘起
