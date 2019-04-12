@@ -156,8 +156,8 @@ root@OpenWrt:~# opkg install luci-app-shadowsocksR_1.2.1_all.ipk
 ### 八、其他
 我编译版本的路由策略是：  
 国内网站：直连  
-国外网张：代理  
-源代码还支持GFW的白名单模式，即在白名单中代理，其他直连。我没有试过，可以[参考](https://github.com/ywb94/openwrt-ssr)。  
+国外网站：代理  
+源代码还支持GFW的白名单模式，即在白名单中代理，其他直连。这个需要另一个安装包，如果需要，请参考[DIY: 基于OpenWRT和小米路由器的透明代理(SSR)(后记：支持GFW List模式)](https://chou-o-ning.github.io/blog/misc/2019/04/11/openwrt-ssr-gfw-version-on-Xiaomi-Mi-Router-3G-box.html)。  
 
 ### 九、一些调试手段
 
