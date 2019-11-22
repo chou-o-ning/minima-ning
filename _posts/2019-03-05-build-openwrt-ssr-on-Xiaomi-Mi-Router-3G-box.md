@@ -128,7 +128,7 @@ Subtarget: MT7621 based boards
 Target Profile: Xiaomi Mi Router 3G  
 其他架构的单板请不要使用这个文件安装。
 
-如果需要自己编译，ShadowsSocksR的源代码在这里，请[参考](https://github.com/ywb94/openwrt-ssr)。
+如果需要自己编译，ShadowsSocksR的源代码在这里，请[参考](https://github.com/xluoke/ywb94-openwrt-ssr)。
 
 为了实现从pc到路由器的上载，需要安装openssh-sftp-server  
 root@OpenWrt:~# opkg update  
