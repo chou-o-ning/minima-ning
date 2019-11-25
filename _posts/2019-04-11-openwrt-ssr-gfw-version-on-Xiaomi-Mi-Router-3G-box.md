@@ -19,7 +19,7 @@ Subtarget: MT7621 based boards
 Target Profile: Xiaomi Mi Router 3G  
 其他架构的单板请不要使用这个文件安装。
 
-安装方法如下： 
+安装方法如下：  
 opkg update  
 luci-app-shadowsocksR-GFW_1.2.1_all.ipk 组件会安装dnsmasq-full，和dnsmasq冲突，因此需要先将dnsmasq组件删除  
 opkg remove dnsmasq  
