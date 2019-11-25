@@ -19,11 +19,21 @@ Subtarget: MT7621 based boards
 Target Profile: Xiaomi Mi Router 3G  
 其他架构的单板请不要使用这个文件安装。
 
+安装方法如下：
+opkg update
+luci-app-shadowsocksR-GFW_1.2.1_all.ipk 组件会安装dnsmasq-full，和dnsmasq冲突，因此需要先将dnsmasq组件删除
+opkg remove dnsmasq
+opkg install luci-app-shadowsocksR-GFW_1.2.1_all.ipk
+下载 https://cokebar.github.io/gfwlist2dnsmasq/dnsmasq_gfwlist_ipset.conf 到 /etc目录下
+编辑 /etc/dnsmasq.conf文件，在文件的在最后一行添加
+conf-file=/etc/dnsmasq_gfwlist_ipset.conf
+重启dnsmasq-full服务即可
+/etc/init.d/dnsmasq restart
+
 在使用过程中，经常会遇到有些网站被墙而该网站又没有列在gfw_list.conf文件中，如果自己维护gfw_list.conf，一旦该文件被更新，则自己维护的列表信息就会丢失。因此可以参考我的博客文章 [DIY: 基于OpenWRT和小米路由器的透明代理之后续（自动更新gfwlist）](http://blog.chinaunix.net/uid-26598889-id-5791265.html) ，做一个自己维护的文件，然后使用脚本将自己的文件和gfw_list.conf文件进行拼接，以此来解决了这个问题。   
 
 
-另外注意：OpenWrt V18.06.2版本，mt76芯片组的的2.4GWiFi有缺陷，请谨慎使用。（5G频段是OK的）  
-更新：V18.06.5版本，这个WiFi缺陷已经修复。
+另外注意：OpenWrt V18.06.2版本，mt76芯片组的的2.4GWiFi有缺陷，请谨慎使用。（5G频段是OK的）（2019/11/25更新：V18.06.5版本，这个WiFi缺陷已经修复。）
 
 因为这个博客使用Jekyll，暂时无法支持评论，因此如果有技术问题，可以发送到我的邮箱一起探讨，邮箱地址为chou dot o dot ning at gmail dot com  
 
