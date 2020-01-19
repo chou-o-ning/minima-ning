@@ -8,8 +8,6 @@ categories: misc
 
 之前我在China Unix的博客 [DIY: 基于OpenWRT和小米路由器的透明代理](http://blog.chinaunix.net/uid-26598889-id-5791053.html) 中写了如何在家改造一台无线路由器，直接支持ShadowSocks，被GFW收录的网站走代理，其他网站不走代理。这篇是其姊妹篇，两者唯一的区别就是使用ShadowSocks和ShadowSocksR.  
 
-另外注意：OpenWrt V18.06版本，mt76芯片组的的2.4GWiFi有缺陷，请谨慎使用。（5G频段是OK的）  
-
 因为这个博客使用Jekyll，暂时无法支持评论，因此如果有技术问题，可以发送到我的邮箱一起探讨，邮箱地址为chou dot o dot ning at gmail dot com  
 
 ### 二、缘起
@@ -32,23 +30,25 @@ categories: misc
 
 我这里推荐小米路由器3G（MiWiFi 3G），理由如下（主要是其性价比）：
 
-1、OpenWRT主干版本和最新版本支持该硬件，当前最新版本是V18.06.2，V18.06是OpenWRT和LEDE合并后的第一个版本；
+1、注意：小米路由器3G有两个硬件版本，V1是带USB接口的，V2不支持USB且Flash和内存都比V1要少。这里是指V1的硬件版本。
 
-2、淘宝上购买包邮价格为199元，在同类性能的路由器里面算是超级便宜的；
+2、OpenWRT主干版本和最新版本支持该硬件，当前最新的稳定版本是V18.06.5，V18.06是OpenWRT和LEDE合并后的第一个版本；
 
-3、一个Wan口和两个Lan上行口为千兆，可以匹配超过百兆的家庭光宽带；
+3、淘宝上购买包邮价格为199元，在同类性能的路由器里面算是超级便宜的（当前新机已经买不到了，可以上咸鱼，价格基本都在一百元以内）；
 
-4、cpu为MediaTek的MT7621AT，mips双核880MHz，每个核支持双线程；
+4、一个Wan口和两个Lan上行口为千兆，可以匹配超过百兆的家庭光宽带；
 
-5、Flash为128MB，这个比较重要，因为OpenWRT支持很多模块的安装。很多低端的路由器因为降成本，Flash配置很小，安装几个模块之后，Flash就满了；
+5、cpu为MediaTek的MT7621AT，mips双核880MHz，每个核支持双线程；
 
-6、内存为256MB，足够跑绝大多数的应用；
+6、Flash为128MB，这个比较重要，因为OpenWRT支持很多模块的安装。很多低端的路由器因为降成本，Flash配置很小，安装几个模块之后，Flash就满了；
 
-7、带USB3.0口，可以挂接移动硬盘或摄像头，还可以玩一些家庭NAS、监控等一些好玩的应用；
+7、内存为256MB，足够跑绝大多数的应用；
 
-8、Wi-Fi支持2.4G和5G双频，MediaTek的无线驱动是开源的，因此开源社区支持力度较好（玩OpenWRT很多人不建议用Broadcom的芯片，主要原因就是其无线部分是闭源的）。注意：OpenWrt V18.06版本，mt76芯片组的的2.4GWiFi有缺陷，请谨慎使用。
+8、带USB3.0口，可以挂接移动硬盘或摄像头，还可以玩一些家庭NAS、监控等一些好玩的应用；
 
-9、PCB版留有UART口，可供在此方面有需求的开发人员使用（对大多数人来说，串口可以不需要，有ssh远程连接就够用了）。当然，如果变砖，可以通过UART来拯救（Bootloader没有被破坏的话）。
+9、Wi-Fi支持2.4G和5G双频，MediaTek的无线驱动是开源的，因此开源社区支持力度较好（玩OpenWRT很多人不建议用Broadcom的芯片，主要原因就是其无线部分是闭源的）。
+
+10、PCB版留有UART口，可供在此方面有需求的开发人员使用（对大多数人来说，串口可以不需要，有ssh远程连接就够用了）。当然，如果变砖，可以通过UART来拯救（Bootloader没有被破坏的话）。
 
 ### 五、路由器烧录OpenWRT firmware
 
@@ -62,16 +62,16 @@ categories: misc
 
 4、登陆到 https://d.miwifi.com/rom/ssh ，用之前注册的账号登录，获取其root密码。注意：如果你有多台小米路由器，每台的root密码是不同的。然后下载工具包miwifi_ssh.bin；
 
-5、到 http://downloads.openwrt.org/releases/18.06.2/targets/ramips/mt7621/ 寻找到 mir3g-squashfs-kernel1.bin 和 mir3g-squashfs-rootfs0.bin，下载之，文件名带有前缀openwrt-18.06.2-ramips-mt7621-）。这里需要说明一下，kernel是linux的内核文件，rootfs是文件系统，嵌入式Linux的Flash一般会有多个分区，kernel和rootfs分别放在两个分区，因此需要分别下载；
+5、到 http://downloads.openwrt.org/releases/18.06.5/targets/ramips/mt7621/ 寻找到 mir3g-squashfs-kernel1.bin 和 mir3g-squashfs-rootfs0.bin，下载之，文件名带有前缀openwrt-18.06.5-ramips-mt7621-）。这里需要说明一下，kernel是linux的内核文件，rootfs是文件系统，嵌入式Linux的Flash一般会有多个分区，kernel和rootfs分别放在两个分区，因此需要分别下载；
 
-6、将下载的三个文件（miwifi_ssh.bin、openwrt-18.06.2-ramips-mt7621-mir3g-squashfs-kernel1.bin、openwrt-18.06.2-ramips-mt7621-mir3g-squashfs-rootfs0.bin）拷贝到格式化为Fat32的U盘；
+6、将下载的三个文件（miwifi_ssh.bin、openwrt-18.06.5-ramips-mt7621-mir3g-squashfs-kernel1.bin、openwrt-18.06.5-ramips-mt7621-mir3g-squashfs-rootfs0.bin）拷贝到格式化为Fat32的U盘；
 
 7、路由器下电，将U盘插入路由器的USB口，按住reset按钮（用回形针或缝衣针），然后路由器上电。等到路由器黄灯开始闪烁时，释放reset按钮。等路由器重启后，使用ssh访问路由器，用root用户登录（路由器的ip地址为192.168.31.1），密码为步骤4的密码（Mac或Ubuntu用户登录命令为ssh root@192.168.31.1)。注意：这个步骤后，路由器就失去了保修。
 
 8、在ssh命令行下  
 cd /extdisks/sda1 (如果你拔出再重插回U盘，这个路径可能会有变化)  
-mtd write openwrt-18.06.2-ramips-mt7621-mir3g-squashfs-kernel1.bin kernel1  
-mtd write openwrt-18.06.2-ramips-mt7621-mir3g-squashfs-rootfs0.bin rootfs0  
+mtd write openwrt-18.06.5-ramips-mt7621-mir3g-squashfs-kernel1.bin kernel1  
+mtd write openwrt-18.06.5-ramips-mt7621-mir3g-squashfs-rootfs0.bin rootfs0  
 nvram set flag_last_success=1  
 nvram commit  
 reboot  
@@ -114,8 +114,8 @@ C、小米路由器也基于OpenWRT开发的，因此无须修改bootloader的�
 
 10、回头看上面的刷文件的命令
 
-mtd write openwrt-18.06.1-ramips-mt7621-mir3g-squashfs-kernel1.bin kernel1 （更新kernel1)   
-mtd write openwrt-18.06.1-ramips-mt7621-mir3g-squashfs-rootfs0.bin rootfs0。（更新rootfs0）  
+mtd write openwrt-18.06.5-ramips-mt7621-mir3g-squashfs-kernel1.bin kernel1 （更新kernel1)   
+mtd write openwrt-18.06.5-ramips-mt7621-mir3g-squashfs-rootfs0.bin rootfs0。（更新rootfs0）  
 nvram set flag_last_success=1（这个命令我不是很确定，可能是让bootloader从kernel1引导，即引导OpenWRT的firmware而不是小米的firmware）  
 nvram commit （保存配置）  
 reboot（重启）  
