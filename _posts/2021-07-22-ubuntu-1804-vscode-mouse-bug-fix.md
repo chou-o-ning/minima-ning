@@ -10,5 +10,7 @@ categories: misc
 
 这里有 imwheel 的安装/启动/系统启动自运行方法[https://blog.csdn.net/qq_32767041/article/details/84034280](https://blog.csdn.net/qq_32767041/article/details/84034280)，请参考。
 
+有意思的是，通过系统自启动的方式有时还是未解决，这时杀imwheel进程再启动就好了，原因不明。
+
 因为这个博客使用Jekyll，暂时无法支持评论，因此如果有技术问题，可以发送到我的邮箱一起探讨，邮箱地址为chou dot o dot ning at gmail dot com  
 
