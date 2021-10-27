@@ -4,7 +4,7 @@ title: "chisel 在电信网络中被阻断问题解决"
 categories: misc
 ---
 
-client 端（公司网络），然而却可以连接家中 NAT 后的 client 端（家用网络）。在客户端抓包如下：
+在公司网络安装一个边缘计算软件 Portainer，发现外网的 Server 端无法连接在 NAT 后的client 端（公司网络），然而却可以连接家中 NAT 后的 client 端（家用网络）。在客户端抓包如下：
 ![抓包图](/blog/assets/client_cap.png)
 
 从抓包看，tcp 一开始的连接是成功的，然而一旦进行 websocket 连接（http get 报文），连接马上被 reset 掉了。看起来有点像被防火墙阻断。
