@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OpenWRT 版本的 ShadowSocksR 如何配置 protocol-param 配置项"
+title: "ShadowSocksR 的 OpenWRT 版本如何配置 protocol-param 配置项"
 categories: misc
 ---
 
