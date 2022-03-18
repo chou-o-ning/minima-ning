@@ -18,6 +18,7 @@ categories: misc
 因此可以看出 Ubuntu 20.04 的 Samba 安全性有了提升，无法直接访问该服务器，而必须输入访问的共享目录。
 
 另外需要注意，按照 Samba 的配置（见下图）：共享目录名为 smb://gserer/share 而不是 smb://gserver/home/ning/project
+
 ![Samba配置](/blog/assets/samba_2.png)
 
 因为这个博客使用Jekyll，暂时无法支持评论，因此如果有技术问题，可以发送到我的邮箱一起探讨，邮箱地址为chou dot o dot ning at gmail dot com  
