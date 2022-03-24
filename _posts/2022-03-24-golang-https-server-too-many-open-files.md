@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "golang 实现的简易 https server 出现 "too many open files" 错误的解决方法"
+title: "golang 实现的简易 https server 出现 'too many open files' 错误的解决方法"
 categories: misc
 ---
 
