@@ -3,6 +3,7 @@ layout: post
 title: "golang 实现的简易 https server 出现 "too many open files" 错误的解决方法"
 categories: misc
 ---
+
 下面是一个很简易的 https server 的 golang 实现，网上常见的一段代码，但其实有一个致命问题。
 
 ```
