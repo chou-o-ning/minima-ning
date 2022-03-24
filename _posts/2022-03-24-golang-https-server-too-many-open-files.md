@@ -68,9 +68,12 @@ func main() {
 
 客户端访问一段时间后，服务端提示错误“http: Accept error: accept tcp [::]:9000: accept4: too many open files”。
 
-用 lsof -p xxxx | grep :9000 | wc -l 命令查看连接个数（xxxx 为 https server 的 pid），发现连接一直在增长，服务端没有把连接释放。
+用下面命令查看连接个数（xxxx 为 https server 的 pid），发现连接一直在增长，服务端没有把连接释放。
+```
+lsof -p xxxx | grep :9000 | wc -l
+```
 
-将代码修改如下，设置 ReadTimeout（一分钟），再用 lsof -p xxxx | grep :9000 | wc -l 命令查看连接个数。连接数在一分钟后就不再增长，问题解决。
+将代码修改如下，设置 ReadTimeout（一分钟），再用 lsof 命令查看连接个数。连接数在一分钟后就不再增长，问题解决。
 
 ```
 package main
@@ -98,6 +101,7 @@ func main() {
     }
 }
 ```
+
 
 因为这个博客使用Jekyll，暂时无法支持评论，因此如果有技术问题，可以发送到我的邮箱一起探讨，邮箱地址为chou dot o dot ning at gmail dot com  
 
