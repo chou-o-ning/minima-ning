@@ -10,11 +10,11 @@ SSR 的安装基于 OpenWrt 21.02.3 版本。
 
 配置 ssr 的编译[https://github.com/xluoke/ywb94-openwrt-ssr](https://github.com/xluoke/ywb94-openwrt-ssr)(先不要编译)
 
-然后在 make menuconfig 的时候配置如下：
-Base system: 去掉 dnsmasq 添加 dnsmasq-full (luci-app-shadowsocksR-GFW_1.2.1_all.ipk 组件会和 dnsmasq 冲突)
-Network -> Web Servers/Proxies -> 添加 shadowsocks-libev-ss-local shadowsocks-libev-ss-redir shadowsocks-libev-ss-rules shadowsocks-libev-ss-tunnel (因为小米路由器 4C 的 Flash 版本 linux 内核不支持，需要修改驱动代码后重新编译，因此这些组件不能直接用 opkg install 的方式下载安装，必须自己编译)
-LuCI -> Collections: 勾选 luci (支持 Web UI)
-LuCI -> Applications: luci-app-shadowsocksR-GFW (选择 M，即以 ipk 方式安装)
+然后在 make menuconfig 的时候配置如下：  
+Base system: 去掉 dnsmasq 添加 dnsmasq-full (luci-app-shadowsocksR-GFW_1.2.1_all.ipk 组件会和 dnsmasq 冲突)  
+Network -> Web Servers/Proxies -> 添加 shadowsocks-libev-ss-local shadowsocks-libev-ss-redir shadowsocks-libev-ss-rules shadowsocks-libev-ss-tunnel (因为小米路由器 4C 的 Flash 版本 linux 内核不支持，需要修改驱动代码后重新编译，因此这些组件不能直接用 opkg install 的方式下载安装，必须自己编译)  
+LuCI -> Collections: 勾选 luci (支持 Web UI)  
+LuCI -> Applications: luci-app-shadowsocksR-GFW (选择 M，即以 ipk 方式安装)  
     
 编译后，烧录 firmware。并安装 luci-compat luci-lib-ipkg luci-app-shadowsocksR-GFW_1.2.1_all.ipk
 
